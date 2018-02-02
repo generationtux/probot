@@ -1,19 +1,16 @@
 {
-  "name": "probot",
+  "name": "generationtux-probot",
+  "private": true,
   "version": "0.0.0-development",
   "description": "a trainable robot that responds to activity on GitHub",
-  "repository": "https://github.com/probot/probot",
+  "repository": "https://github.com/generationtux/probot",
   "main": "lib/index.js",
   "bin": {
     "probot": "./bin/probot.js"
   },
   "scripts": {
-    "start": "node ./bin/probot run",
-    "test": "jest --coverage && standard && npm run doc-lint",
-    "doc-lint": "standard docs/**/*.md",
-    "doc": "jsdoc -c .jsdoc.json",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "postsemantic-release": "script/publish-docs"
+    "start": "./bin/probot.js run",
+    "test": "jest --coverage && standard && npm run doc-lint"
   },
   "jest": {
     "setupFiles": [
@@ -23,6 +20,7 @@
   "author": "Brandon Keepers",
   "license": "ISC",
   "dependencies": {
+    "probot-stale": "probot/stale",
     "@octokit/rest": "14.0.8",
     "bottleneck": "^1.16.0",
     "bunyan": "^1.8.12",
@@ -67,5 +65,10 @@
   },
   "engines": {
     "node": ">=7.7"
+  },
+  "probot": {
+    "apps": [
+      "probot-stale"
+    ]
   }
 }
